@@ -1,0 +1,192 @@
+package com.yyh.springboot_template.common.result;
+
+import lombok.Getter;
+
+/**
+ * 统一返回结果状态信息类
+ * 根据阿里巴巴开发规约编写
+ *
+ * @author sora
+ */
+@Getter
+public enum ResultCodeEnum {
+
+    SUCCESS("00000", "一切 ok"),
+   
+    USER_CLIENT_ERROR("A0001", "用户端错误"), //一级宏观错误码
+    USER_REGISTRATION_ERROR("A0100", "用户注册错误"),  //二级宏观错误码
+    USER_NOT_AGREE_PRIVACY("A0101", "用户未同意隐私协议"),
+    REGISTER_COUNTRY_RESTRICTED("A0102", "注册国家或地区受限"),
+    USERNAME_VALIDATION_FAIL("A0110", "用户名校验失败"),
+    USERNAME_EXISTS("A0111", "用户名已存在"),
+    USERNAME_SENSITIVE_WORDS("A0112", "用户名包含敏感词"),
+    USERNAME_SPECIAL_CHARACTERS("A0113", "用户名包含特殊字符"),
+    PASSWORD_VALIDATION_FAIL("A0120", "密码校验失败"),
+    PASSWORD_LENGTH_INSUFFICIENT("A0121", "密码长度不够"),
+    PASSWORD_STRENGTH_INSUFFICIENT("A0122", "密码强度不够"),
+    VERIFICATION_CODE_INPUT_ERROR("A0130", "校验码输入错误"),
+    SMS_VERIFICATION_CODE_INPUT_ERROR("A0131", "短信校验码输入错误"),
+    EMAIL_VERIFICATION_CODE_INPUT_ERROR("A0132", "邮件校验码输入错误"),
+    VOICE_VERIFICATION_CODE_INPUT_ERROR("A0133", "语音校验码输入错误"),
+    USER_CERTIFICATE_ABNORMAL("A0140", "用户证件异常"),
+    USER_CERTIFICATE_TYPE_NOT_SELECTED("A0141", "用户证件类型未选择"),
+    MAINLAND_ID_NUMBER_VALIDATION_ILLEGAL("A0142", "大陆身份证编号校验非法"),
+    PASSPORT_NUMBER_VALIDATION_ILLEGAL("A0143", "护照编号校验非法"),
+    MILITARY_ID_NUMBER_VALIDATION_ILLEGAL("A0144", "军官证编号校验非法"),
+    USER_BASIC_INFO_VALIDATION_FAIL("A0150", "用户基本信息校验失败"),
+    PHONE_FORMAT_VALIDATION_FAIL("A0151", "手机格式校验失败"),
+    ADDRESS_FORMAT_VALIDATION_FAIL("A0152", "地址格式校验失败"),
+    EMAIL_FORMAT_VALIDATION_FAIL("A0153", "邮箱格式校验失败"),
+    
+    USER_LOGIN_EXCEPTION("A0200", "用户登录异常"),//二级宏观错误码
+    USER_ACCOUNT_NOT_EXIST("A0201", "用户账户不存在"),
+    USER_ACCOUNT_FROZEN("A0202", "用户账户被冻结"),
+    USER_ACCOUNT_INVALIDATED("A0203", "用户账户已作废"),
+    USER_PASSWORD_ERROR("A0210", "用户密码错误"),
+    USER_PASSWORD_ERROR_EXCEED_LIMIT("A0211", "用户输入密码错误次数超限"),
+    USER_IDENTITY_VALIDATION_FAIL("A0220", "用户身份校验失败"),
+    USER_FINGERPRINT_RECOGNITION_FAIL("A0221", "用户指纹识别失败"),
+    USER_FACE_RECOGNITION_FAIL("A0222", "用户面容识别失败"),
+    USER_NOT_AUTHORIZED_THIRD_PARTY_LOGIN("A0223", "用户未获得第三方登录授权"),
+    USER_LOGIN_EXPIRED("A0230", "用户登录已过期"),
+    USER_VERIFICATION_CODE_ERROR("A0240", "用户验证码错误"),
+    USER_VERIFICATION_CODE_EXCEED_LIMIT("A0241", "用户验证码尝试次数超限"),
+   
+    ACCESS_PERMISSION_EXCEPTION("A0300", "访问权限异常"), //二级宏观错误码
+    UNAUTHORIZED_ACCESS("A0301", "访问未授权"),
+    AUTHORIZING("A0302", "正在授权中"),
+    USER_AUTHORIZATION_DENIED("A0303", "用户授权申请被拒绝"),
+    OBJECT_PRIVACY_INTERCEPTED("A0310", "因访问对象隐私设置被拦截"),
+    AUTHORIZATION_EXPIRED("A0311", "授权已过期"),
+    NO_API_PERMISSION("A0312", "无权限使用 API"),
+    USER_ACCESS_INTERCEPTED("A0320", "用户访问被拦截"),
+    BLACKLIST_USER("A0321", "黑名单用户"),
+    ACCOUNT_FROZEN("A0322", "账号被冻结"),
+    ILLEGAL_IP_ADDRESS("A0323", "非法 IP 地址"),
+    GATEWAY_ACCESS_LIMITED("A0324", "网关访问受限"),
+    REGION_BLACKLIST("A0325", "地域黑名单"),
+    SERVICE_ARREARS("A0330", "服务已欠费"),
+    USER_SIGNATURE_EXCEPTION("A0340", "用户签名异常"),
+    RSA_SIGNATURE_ERROR("A0341", "RSA 签名错误"),
+
+    USER_REQUEST_PARAMETER_ERROR("A0400", "用户请求参数错误"),    //二级宏观错误码
+    MALICIOUS_REDIRECT_LINK("A0401", "包含非法恶意跳转链接"),
+    INVALID_USER_INPUT("A0402", "无效的用户输入"),
+    REQUIRED_PARAMETER_EMPTY("A0410", "请求必填参数为空"),
+    USER_ORDER_NUMBER_EMPTY("A0411", "用户订单号为空"),
+    ORDER_QUANTITY_EMPTY("A0412", "订购数量为空"),
+    TIMESTAMP_PARAMETER_MISSING("A0413", "缺少时间戳参数"),
+    INVALID_TIMESTAMP_PARAMETER("A0414", "非法的时间戳参数"),
+    PARAMETER_VALUE_EXCEEDS_LIMIT("A0420", "请求参数值超出允许的范围"),
+    PARAMETER_FORMAT_MISMATCH("A0421", "参数格式不匹配"),
+    ADDRESS_NOT_IN_SERVICE_RANGE("A0422", "地址不在服务范围"),
+    TIME_NOT_IN_SERVICE_RANGE("A0423", "时间不在服务范围"),
+    AMOUNT_EXCEEDS_LIMIT("A0424", "金额超出限制"),
+    QUANTITY_EXCEEDS_LIMIT("A0425", "数量超出限制"),
+    BATCH_PROCESSING_LIMIT_EXCEEDED("A0426", "请求批量处理总个数超出限制"),
+    JSON_PARSE_FAILURE("A0427", "请求 JSON 解析失败"),
+    ILLEGAL_USER_INPUT_CONTENT("A0430", "用户输入内容非法"),
+    CONTAINS_PROHIBITED_SENSITIVE_WORDS("A0431", "包含违禁敏感词"),
+    IMAGE_CONTAINS_PROHIBITED_INFORMATION("A0432", "图片包含违禁信息"),
+    FILE_INFRINGES_COPYRIGHT("A0433", "文件侵犯版权"),
+    USER_OPERATION_EXCEPTION("A0440", "用户操作异常"),
+    USER_PAYMENT_TIMEOUT("A0441", "用户支付超时"),
+    CONFIRM_ORDER_TIMEOUT("A0442", "确认订单超时"),
+    ORDER_CLOSED("A0443", "订单已关闭"),
+
+    USER_SERVICE_REQUEST_EXCEPTION("A0500", "用户请求服务异常"),    //二级宏观错误码
+    REQUEST_FREQUENCY_EXCEEDS_LIMIT("A0501", "请求次数超出限制"),
+    CONCURRENT_REQUESTS_EXCEED_LIMIT("A0502", "请求并发数超出限制"),
+    USER_OPERATION_WAIT("A0503", "用户操作请等待"),
+    WEBSOCKET_CONNECTION_EXCEPTION("A0504", "WebSocket 连接异常"),
+    WEBSOCKET_CONNECTION_DISCONNECTED("A0505", "WebSocket 连接断开"),
+    USER_REPEAT_REQUEST("A0506", "用户重复请求"),
+
+    USER_RESOURCE_EXCEPTION("A0600", "用户资源异常"),    //二级宏观错误码
+    ACCOUNT_BALANCE_INSUFFICIENT("A0601", "账户余额不足"),
+    USER_DISK_SPACE_INSUFFICIENT("A0602", "用户磁盘空间不足"),
+    USER_MEMORY_SPACE_INSUFFICIENT("A0603", "用户内存空间不足"),
+    USER_OSS_CAPACITY_INSUFFICIENT("A0604", "用户 OSS 容量不足"),
+    USER_QUOTA_EXHAUSTED("A0605", "用户配额已用光"),
+
+    USER_FILE_UPLOAD_EXCEPTION("A0700", "用户上传文件异常"),    //二级宏观错误码
+    USER_UPLOAD_FILE_TYPE_MISMATCH("A0701", "用户上传文件类型不匹配"),
+    USER_UPLOAD_FILE_TOO_LARGE("A0702", "用户上传文件太大"),
+    USER_UPLOAD_IMAGE_TOO_LARGE("A0703", "用户上传图片太大"),
+    USER_UPLOAD_VIDEO_TOO_LARGE("A0704", "用户上传视频太大"),
+    USER_UPLOAD_COMPRESSED_FILE_TOO_LARGE("A0705", "用户上传压缩文件太大"),
+
+    USER_CURRENT_VERSION_EXCEPTION("A0800", "用户当前版本异常"),    //二级宏观错误码
+    USER_INSTALLATION_VERSION_MISMATCH("A0801", "用户安装版本与系统不匹配"),
+    USER_INSTALLATION_VERSION_TOO_LOW("A0802", "用户安装版本过低"),
+    USER_INSTALLATION_VERSION_TOO_HIGH("A0803", "用户安装版本过高"),
+    USER_INSTALLATION_VERSION_EXPIRED("A0804", "用户安装版本已过期"),
+    USER_API_REQUEST_VERSION_MISMATCH("A0805", "用户 API 请求版本不匹配"),
+    USER_API_REQUEST_VERSION_TOO_HIGH("A0806", "用户 API 请求版本过高"),
+    USER_API_REQUEST_VERSION_TOO_LOW("A0807", "用户 API 请求版本过低"),
+
+    USER_PRIVACY_NOT_AUTHORIZED("A0900", "用户隐私未授权"),    //二级宏观错误码
+    USER_PRIVACY_NOT_SIGNED("A0901", "用户隐私未签署"),
+    USER_MONITOR_NOT_AUTHORIZED("A0902", "用户摄像头未授权"),
+    USER_CAMERA_NOT_AUTHORIZED("A0903", "用户相机未授权"),
+    USER_IMAGE_LIBRARY_NOT_AUTHORIZED("A0904", "用户图片库未授权"),
+    USER_FILE_NOT_AUTHORIZED("A0905", "用户文件未授权"),
+    USER_LOCATION_NOT_AUTHORIZED("A0906", "用户位置信息未授权"),
+    USER_CONTACTS_NOT_AUTHORIZED("A0907", "用户通讯录未授权"),
+
+    USER_DEVICE_EXCEPTION("A1000", "用户设备异常"),    //二级宏观错误码
+    USER_CAMERA_EXCEPTION("A1001", "用户相机异常"),
+    USER_MICROPHONE_EXCEPTION("A1002", "用户麦克风异常"),
+    USER_EARPIECE_EXCEPTION("A1003", "用户听筒异常"),
+    USER_SPEAKER_EXCEPTION("A1004", "用户扬声器异常"),
+    USER_GPS_LOCATION_EXCEPTION("A1005", "用户 GPS 定位异常"),
+
+    SYSTEM_EXECUTION_ERROR("B0001", "系统执行出错"),    //一级宏观错误码
+
+    SYSTEM_EXECUTION_TIMEOUT("B0100", "系统执行超时"),    //二级宏观错误码
+    SYSTEM_ORDER_PROCESSING_TIMEOUT("B0101", "系统订单处理超时"),
+
+    SYSTEM_DISASTER_RECOVERY_TRIGGERED("B0200", "系统容灾功能被触发"),    //二级宏观错误码
+    SYSTEM_LIMIT_FLOW("B0210", "系统限流"),
+    SYSTEM_FUNCTION_DEGRADATION("B0220", "系统功能降级"),
+
+    SYSTEM_RESOURCE_EXCEPTION("B0300", "系统资源异常"),    //二级宏观错误码
+    SYSTEM_RESOURCE_EXHAUSTED("B0310", "系统资源耗尽"),
+    SYSTEM_DISK_SPACE_EXHAUSTED("B0311", "系统磁盘空间耗尽"),
+    SYSTEM_MEMORY_EXHAUSTED("B0312", "系统内存耗尽"),
+    FILE_HANDLE_EXHAUSTED("B0313", "文件句柄耗尽"),
+    SYSTEM_CONNECTION_POOL_EXHAUSTED("B0314", "系统连接池耗尽"),
+    SYSTEM_THREAD_POOL_EXHAUSTED("B0315", "系统线程池耗尽"),
+
+    SYSTEM_RESOURCE_ACCESS_EXCEPTION("B0320", "系统资源访问异常"),
+    SYSTEM_READ_DISK_FILE_FAILURE("B0321", "系统读取磁盘文件失败"),
+
+    CALL_THIRD_PARTY_SERVICE_ERROR("C0001", "调用第三方服务出错"),
+
+    MIDDLEWARE_SERVICE_ERROR("C0100", "中间件服务出错"),    //一级宏观错误码
+
+    RPC_SERVICE_ERROR("C0110", "RPC 服务出错"),    //二级宏观错误码
+    RPC_SERVICE_NOT_FOUND("C0111", "RPC 服务未找到"),
+    RPC_SERVICE_NOT_REGISTERED("C0112", "RPC 服务未注册"),
+    INTERFACE_NOT_FOUND("C0113", "接口不存在"),
+
+    MESSAGE_SERVICE_ERROR("C0120", "消息服务出错"),
+    MESSAGE_DELIVERY_ERROR("C0121", "消息投递出错"),
+    MESSAGE_CONSUMPTION_ERROR("C0122", "消息消费出错"),
+    MESSAGE_SUBSCRIPTION_ERROR("C0123", "消息订阅出错"),
+    MESSAGE_GROUP_NOT_FOUND("C0124", "消息分组未查到"),
+
+    CACHE_SERVICE_ERROR("C0130", "缓存服务出错"),
+    KEY_LENGTH_EXCEEDS_LIMIT("C0131", "key 长度超过限制");
+
+    private final String code;
+
+    private final String message;
+
+    ResultCodeEnum(String code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+}
+    
+   

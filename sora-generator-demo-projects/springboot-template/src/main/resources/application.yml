@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: selenium_medi
+  mvc:
+    pathmatch:
+      #配合swagger文档做出的配置
+      matching-strategy: ant_path_matcher
+  profiles:
+    active: dev
+
