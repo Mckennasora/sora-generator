@@ -17,7 +17,6 @@ public class GenerateSpringBootConfig {
     private String destPath = "D:\\";
     private String author = "sora";
     private String groupId = "com.yyh";
-    private boolean isLight = true;
     private boolean isKnife4jConfig;
     private boolean isCorsConfig;
 

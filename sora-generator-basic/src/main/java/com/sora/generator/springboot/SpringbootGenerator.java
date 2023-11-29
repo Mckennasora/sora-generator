@@ -22,28 +22,11 @@ import java.nio.file.StandardCopyOption;
 @Slf4j
 public class SpringbootGenerator {
 
-    public static final String DEST_PATH = "D:\\demo";
-
     public static final String DYNAMIC_TEMPLATE_PATH = "src/main/resources/templates/dynamic/springboot-template";
 
     public static final String STATIC_TEMPLATE_PATH = "src/main/resources/templates/static/springboot-template";
 
-    public static void main(String[] args) throws TemplateException, IOException {
-        /**
-         * 方案一
-         * 复制所有文件夹，再按模板分别写入文件
-         * ----> 动态文件和静态文件分开放，给出父文件夹，分别遍历
-         */
-        //模型
-        GenerateSpringBootConfig generateSpringBootConfig = new GenerateSpringBootConfig();
-        generateSpringBootConfig.setProjectName("fuckYCL-site");
-
-        //判断是否有该文件夹
-        File file = new File(DEST_PATH + File.separator + generateSpringBootConfig.getProjectName());
-        if(file.exists()){
-            throw new RuntimeException("文件夹已存在，请重试");
-        }
-
+    public static void generate(GenerateSpringBootConfig generateSpringBootConfig) throws TemplateException, IOException {
 
         String projectPath = System.getProperty("user.dir");
         if (log.isDebugEnabled()) {
@@ -51,8 +34,13 @@ public class SpringbootGenerator {
         }
 
         //目标文件夹
-        String destPath = DEST_PATH + File.separator;
+        String destPath = generateSpringBootConfig.getDestPath() + File.separator;
 
+        //判断是否有该文件夹
+        File file = new File(destPath + File.separator + generateSpringBootConfig.getProjectName());
+        if(file.exists()){
+            throw new RuntimeException("文件夹已存在，请重试");
+        }
         // 静态复制
         String staticTemplatePath = projectPath + File.separator + STATIC_TEMPLATE_PATH;
         copyFileByRecursive(new File(staticTemplatePath), new File(destPath));
@@ -63,8 +51,8 @@ public class SpringbootGenerator {
         //生成
         dynamicGeneratorByRecursive(new File(dynamicTemplatePath), new File(destPath), generateSpringBootConfig);
         dynamicRenameByRecursive(new File(destPath + "springboot-template"), generateSpringBootConfig);
-
     }
+
 
     /**
      * 文件 A => 目录 B，则文件 A 放在目录 B 下
@@ -187,7 +175,6 @@ public class SpringbootGenerator {
     private static void copyFileByRecursive(File inputFile, File outputFile) throws IOException {
         // 区分是文件还是目录
         if (inputFile.isDirectory()) {
-
             File destOutputFile = new File(outputFile, inputFile.getName());
             // 如果是目录，首先创建目标目录
             if (!destOutputFile.exists()) {
@@ -212,4 +199,44 @@ public class SpringbootGenerator {
             Files.copy(inputFile.toPath(), destPath, StandardCopyOption.REPLACE_EXISTING);
         }
     }
+
+//    public static void main(String[] args) throws TemplateException, IOException {
+//        /**
+//         * 方案一
+//         * 复制所有文件夹，再按模板分别写入文件
+//         * ----> 动态文件和静态文件分开放，给出父文件夹，分别遍历
+//         */
+//        //模型
+//        GenerateSpringBootConfig generateSpringBootConfig = new GenerateSpringBootConfig();
+//        generateSpringBootConfig.setProjectName("fuckYCL-site");
+//
+//         String DEST_PATH = "D:\\demo";
+//
+//        //判断是否有该文件夹
+//        File file = new File(DEST_PATH + File.separator + generateSpringBootConfig.getProjectName());
+//        if(file.exists()){
+//            throw new RuntimeException("文件夹已存在，请重试");
+//        }
+//
+//
+//        String projectPath = System.getProperty("user.dir");
+//        if (log.isDebugEnabled()) {
+//            log.debug("projectPath:{}", projectPath);
+//        }
+//
+//        //目标文件夹
+//        String destPath = DEST_PATH + File.separator;
+//
+//        // 静态复制
+//        String staticTemplatePath = projectPath + File.separator + STATIC_TEMPLATE_PATH;
+//        copyFileByRecursive(new File(staticTemplatePath), new File(destPath));
+//
+//        // 动态生成
+//        String dynamicTemplatePath = projectPath + File.separator + DYNAMIC_TEMPLATE_PATH;
+//
+//        //生成
+//        dynamicGeneratorByRecursive(new File(dynamicTemplatePath), new File(destPath), generateSpringBootConfig);
+//        dynamicRenameByRecursive(new File(destPath + "springboot-template"), generateSpringBootConfig);
+//
+//    }
 }
