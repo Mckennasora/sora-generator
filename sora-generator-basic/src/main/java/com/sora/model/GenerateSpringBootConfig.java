@@ -10,10 +10,11 @@ import java.util.stream.Collectors;
  * @author sora
  */
 @Data
-public class SpringBootTemplateConfig {
+public class GenerateSpringBootConfig {
     private String projectName = "springboot-template";
     private String projectNameUnderLine;
     private String projectNameBigCamel;
+    private String destPath = "D:\\";
     private String author = "sora";
     private String groupId = "com.yyh";
     private boolean isLight = true;
@@ -31,10 +32,10 @@ public class SpringBootTemplateConfig {
         }).collect(Collectors.joining());
     }
 
-    public static void main(String[] args) {
-        SpringBootTemplateConfig springBootTemplateConfig = new SpringBootTemplateConfig();
-        System.out.println("springBootTemplateConfig = " + springBootTemplateConfig);
-        springBootTemplateConfig.setProjectName("spring-fuck-you");
-        System.out.println("springBootTemplateConfig = " + springBootTemplateConfig);
-    }
+//    public static void main(String[] args) {
+//        GenerateSpringBootConfig generateSpringBootConfig = new GenerateSpringBootConfig();
+//        System.out.println("springBootTemplateConfig = " + generateSpringBootConfig);
+//        generateSpringBootConfig.setProjectName("spring-fuck-you");
+//        System.out.println("springBootTemplateConfig = " + generateSpringBootConfig);
+//    }
 }
