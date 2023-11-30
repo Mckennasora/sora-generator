@@ -36,6 +36,7 @@ public class BasicTemplateCommand implements Callable<Integer> {
         generateSpringBootConfig.setProjectName(this.projectName);
         generateSpringBootConfig.setDestPath(this.destPath);
         generateSpringBootConfig.setAuthor(this.author);
+        generateSpringBootConfig.setGroupId(this.groupId);
 //        generateSpringBootConfig.setKnife4jConfig(false);
 //        generateSpringBootConfig.setCorsConfig(false);
 

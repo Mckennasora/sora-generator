@@ -1,4 +1,4 @@
-package com.yyh.${projectNameUnderLine}.common.config;
+package ${groupId}.${projectNameUnderLine}.common.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

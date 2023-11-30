@@ -8,7 +8,7 @@
         <version>2.7.17</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.yyh</groupId>
+    <groupId>${groupId}</groupId>
     <artifactId>${projectName}</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>${projectName}</name>

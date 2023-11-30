@@ -1,4 +1,4 @@
-package com.yyh.${projectNameUnderLine}.common.config;
+package ${groupId}.${projectNameUnderLine}.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +29,7 @@ public class Knife4jConfig {
                         .build())
                 .select()
                 // 指定 Controller 扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("com.yyh.${projectNameUnderLine}.module"))
+                .apis(RequestHandlerSelectors.basePackage("${groupId}.${projectNameUnderLine}.module"))
                 .paths(PathSelectors.any())
                 .build();
     }

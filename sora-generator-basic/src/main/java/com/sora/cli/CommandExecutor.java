@@ -37,8 +37,9 @@ public class CommandExecutor implements Runnable {
     }
 
     public static void main(String[] args) {
-        String[] params = new String[]{"--help"};
+//        String[] params = new String[]{"basic"};
 //        String[] params = new String[]{"basic","-pn","i-fuck-gem","-d","-a"};
+        String[] params = new String[]{"basic","-pn","test-for-groupid","-d","d:\\test","-a","yyhadsf","-g","cn.gem.ilove.gem"};
         params = CommandUtil.autoComplete(params);
         new CommandLine(new CommandExecutor())
                 .addSubcommand(new ListCommand())
