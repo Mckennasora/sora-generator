@@ -1,4 +1,4 @@
-package com.yyh.${projectNameUnderLine};
+package ${groupId}.${projectNameUnderLine};
 
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
@@ -9,7 +9,7 @@ import org.springframework.core.env.Environment;
 
 @Slf4j
 @SpringBootApplication
-@MapperScan("com.yyh.${projectNameUnderLine}.module.*.dao")
+@MapperScan("${groupId}.${projectNameUnderLine}.module.*.dao")
 public class ${projectNameBigCamel}Application {
 
     public static void main(String[] args) {

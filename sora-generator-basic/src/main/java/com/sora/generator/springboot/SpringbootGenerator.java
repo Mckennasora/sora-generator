@@ -1,5 +1,6 @@
 package com.sora.generator.springboot;
 
+import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ArrayUtil;
 import com.sora.model.GenerateSpringBootConfig;
 import freemarker.template.Configuration;
@@ -38,7 +39,7 @@ public class SpringbootGenerator {
 
         //判断是否有该文件夹
         File file = new File(destPath + File.separator + generateSpringBootConfig.getProjectName());
-        if(file.exists()){
+        if (file.exists()) {
             throw new RuntimeException("文件夹已存在，请重试");
         }
         // 静态复制
@@ -51,6 +52,27 @@ public class SpringbootGenerator {
         //生成
         dynamicGeneratorByRecursive(new File(dynamicTemplatePath), new File(destPath), generateSpringBootConfig);
         dynamicRenameByRecursive(new File(destPath + "springboot-template"), generateSpringBootConfig);
+
+        //修改包路径
+        renameGroupId(new File(destPath), generateSpringBootConfig);
+    }
+
+    private static void renameGroupId(File outputPath, Object modelObj) {
+        GenerateSpringBootConfig config = (GenerateSpringBootConfig) modelObj;
+        File file = new File(outputPath + File.separator + ((GenerateSpringBootConfig) modelObj).getProjectName() + File.separator + "src\\main\\java\\com\\yyh");
+        File newFile = new File(outputPath + File.separator + ((GenerateSpringBootConfig) modelObj).getProjectName() + File.separator + "src\\main\\java\\" + File.separator + config.getGroupId().replace(".", "\\"));
+        FileUtil.move(file, newFile, true);
+        boolean delete = new File(outputPath + File.separator + ((GenerateSpringBootConfig) modelObj).getProjectName() + File.separator + "src\\main\\java\\com").delete();
+
+        File testFile = new File(outputPath + File.separator + ((GenerateSpringBootConfig) modelObj).getProjectName() + File.separator + "src\\test\\java\\com\\yyh");
+        File newTestFile = new File(outputPath + File.separator + ((GenerateSpringBootConfig) modelObj).getProjectName() + File.separator + "src\\test\\java\\" + File.separator + config.getGroupId().replace(".", "\\"));
+        FileUtil.move(testFile, newTestFile, true);
+        boolean delete1 = new File(outputPath + File.separator + ((GenerateSpringBootConfig) modelObj).getProjectName() + File.separator + "src\\test\\java\\com").delete();
+
+        if (log.isDebugEnabled()) {
+            log.debug("主文件生成:{}", delete);
+            log.debug("测试文件生成:{}", delete1);
+        }
     }
 
 

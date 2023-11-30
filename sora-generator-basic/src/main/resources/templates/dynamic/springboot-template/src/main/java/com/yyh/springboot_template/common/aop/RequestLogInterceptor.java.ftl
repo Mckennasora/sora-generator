@@ -1,4 +1,4 @@
-package com.yyh.${projectNameUnderLine}.common.aop;
+package ${groupId}.${projectNameUnderLine}.common.aop;
 
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +30,7 @@ public class RequestLogInterceptor {
     /**
      * 执行拦截
      */
-    @Around("execution(* com.yyh.${projectNameUnderLine}.module.*.controller.*.*(..))")
+    @Around("execution(* ${groupId}.${projectNameUnderLine}.module.*.controller.*.*(..))")
     public Object doInterceptor(ProceedingJoinPoint point) throws Throwable {
         // 计时
         StopWatch stopWatch = new StopWatch();

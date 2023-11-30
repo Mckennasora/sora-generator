@@ -1,7 +1,7 @@
-package com.yyh.${projectNameUnderLine}.common.exception;
+package ${groupId}.${projectNameUnderLine}.common.exception;
 
 
-import com.yyh.${projectNameUnderLine}.common.result.ResultCodeEnum;
+import ${groupId}.${projectNameUnderLine}.common.result.ResultCodeEnum;
 import lombok.Data;
 import lombok.ToString;
 

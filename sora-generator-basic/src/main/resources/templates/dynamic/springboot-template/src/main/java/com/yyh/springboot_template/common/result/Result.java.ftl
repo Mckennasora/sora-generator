@@ -1,4 +1,4 @@
-package com.yyh.${projectNameUnderLine}.common.result;
+package ${groupId}.${projectNameUnderLine}.common.result;
 
 import lombok.Data;
 

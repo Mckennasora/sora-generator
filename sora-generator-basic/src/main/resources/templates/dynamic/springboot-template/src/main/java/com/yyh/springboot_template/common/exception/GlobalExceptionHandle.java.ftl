@@ -1,7 +1,7 @@
-package com.yyh.${projectNameUnderLine}.common.exception;
+package ${groupId}.${projectNameUnderLine}.common.exception;
 
 
-import com.yyh.${projectNameUnderLine}.common.result.Result;
+import ${groupId}.${projectNameUnderLine}.common.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
