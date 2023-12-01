@@ -6,7 +6,7 @@ import com.sora.cli.util.CommandUtil;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
-@Command(name = "sora",version = "asdfhausidhfaiodf",mixinStandardHelpOptions = true)
+@Command(name = "sora",version = "1.0.0",mixinStandardHelpOptions = true)
 public class CommandExecutor implements Runnable {
 
     private final CommandLine commandLine;
@@ -39,7 +39,11 @@ public class CommandExecutor implements Runnable {
     public static void main(String[] args) {
 //        String[] params = new String[]{"basic"};
 //        String[] params = new String[]{"basic","-pn","i-fuck-gem","-d","-a"};
-        String[] params = new String[]{"basic","-pn","test-for-groupid","-d","d:\\test","-a","yyhadsf","-g","cn.gem.ilove.gem"};
+//        String[] params = new String[]{"basic","-pn","test-basic-code","-d","d:\\test","-a","gem","-g","cn.gem.ilove.concert"};
+//        String[] params = new String[]{"basic","-pn","test-for-groupid","-d","d:\\test","-a","yyhadsf","-g","cn.gem.ilove.gem"};
+        String[] params = new String[]{"easyCode","-tn","yza_responselist","-tc","责任边界清单","-u","jdbc:mysql://192.168.155.31:54322/smart_security","-n","yunzhian","-pwd","ZwiLoBRVf40nU0En","-d","D:\\test\\test-basic-code\\src\\main\\java\\cn\\gem\\ilove\\concert\\test_basic_code\\module","-p","cn.gem.ilove.concert.test_basic_code.module","-a","gemboyfriend"};
+//        String[] params = new String[]{"easyCode","-h"};
+//        String[] params = new String[]{"basic","-h"};
         params = CommandUtil.autoComplete(params);
         new CommandLine(new CommandExecutor())
                 .addSubcommand(new ListCommand())
